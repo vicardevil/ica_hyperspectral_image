@@ -6,13 +6,13 @@ function M = tensor_mul(T, X, d)
     Tshape = size(T);
     Xshape = size(X);
 
-    Mshape = Tshape([d, 1:d-1, d+1:length(Tshape)]);
+    Mshape = Tshape([d, 1:d - 1, d + 1:length(Tshape)]);
     Mshape(1) = Xshape(2);
 
-    T = permute(T, [d, 1:d-1, d+1:length(Tshape)]);
+    T = permute(T, [d, 1:d - 1, d + 1:length(Tshape)]);
     T = reshape(T, Xshape(1), []);
-    
+
     M = X' * T;
     M = reshape(M, Mshape);
-    M = permute(M, [2:d, 1, d+1:length(Tshape)]);
+    M = permute(M, [2:d, 1, d + 1:length(Tshape)]);
 end
